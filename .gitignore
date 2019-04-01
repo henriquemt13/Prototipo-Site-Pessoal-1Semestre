@@ -1,6 +1,10 @@
+#isso é um comentário
 *.doc
 *.docx
 *.zip
 
 
 testes/
+
+#ignorar arquivo inteiro aleatorio
+nomedoarquivo.txt
