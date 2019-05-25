@@ -56,17 +56,17 @@
         </style>
         <h3>Login</h3>
     <div class="login">
-        <center><form>
+        <center><form id="form_login" method="post" onsubmit="return entrar()">
                 <div class="form-group">
                  <label for="exampleInputEmail1">Email</label> <br>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Insira seu email">
+                  <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Insira seu email">
                 </div> <br>
                 <div class="form-group">
                   <label for="exampleInputPassword1">Senha</label> <br>
                   
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Insira sua senha">
+                <input type="password" class="form-control" id="senha" placeholder="Insira sua senha">
                 </div> <br>
-                <button type="submit" class="btn btn-primary" style="background-color:#000000;border-color:#000000; color: #ffffff"onclick="verificar()">Login</button></center>
+                <button type="submit" class="btn btn-primary" style="background-color:#000000;border-color:#000000; color: #ffffff"onclick="entrar()">Login</button></center>
             <a class="fgtpass" href="fyp.html">Esqueceu sua senha?</a>
             </form> </center>
     </div>
@@ -75,3 +75,56 @@
     </div>
 </body>
 </html>
+
+<script>
+
+
+verificarAutenticacao();
+
+function verificarAutenticacao() {
+    if (sessionStorage.usuario_bandtec != undefined) {
+        window.location.href = 'grafico.html';
+    }
+}
+
+function entrar() {
+    aguardar();
+    var formulario = new URLSearchParams(new FormData(form_login));
+    fetch("/usuarios/entrar", {
+        method: "POST",
+        body: formulario
+    }).then(function (response) {
+        
+        if (response.ok) {
+
+            response.json().then(function (resposta) {
+
+                sessionStorage.usuario_bandtec = resposta.nome;
+                verificarAutenticacao();
+
+            });
+        } else {
+
+            console.log('Erro de login!');
+            finalizar_aguardar();
+        }
+    });
+
+    return false;
+}
+
+function aguardar() {
+    btn_entrar.disabled = true;
+    img_aguarde.style.display='block';
+    div_erro.style.display='none';
+}
+
+function finalizar_aguardar() {
+    btn_entrar.disabled = false;
+    img_aguarde.style.display='none';
+    div_erro.style.display='block';
+}
+
+</script>
+
+</script>

@@ -11,5 +11,6 @@ endereco varchar(70),
 cidade varchar(60),
 estado varchar(2),
 cep varchar(9)
+b
 );
 
