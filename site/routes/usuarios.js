@@ -13,7 +13,7 @@ router.post('/entrar', function (req, res, next) {
     if (login == undefined || senha == undefined) {
       throw new Error(`Dados de login não chegaram completos: ${login} / ${senha}`);
     }
-    return banco.sql.query(`select * from cadastrar where email='${login}' and senha='${senha}'`);
+    return banco.sql.query(`select * from Cadastrar where email='${login}' and senha='${senha}'`);
   }).then(consulta => {
 
     console.log(`Usuários encontrados: ${JSON.stringify(consulta.recordset)}`);
