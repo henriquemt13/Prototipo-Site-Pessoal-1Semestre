@@ -17,14 +17,14 @@ var configuracoes = {
         }
     },
     desenvolvimento: {
-        server: "BASETESTE.database.windows.net",
-        user: "usuariotestes",
-        password: "senhatestes",
-        database: "BASETESTE",
+        server: "servidor01191125.database.windows.net",
+        user: "",
+        password: "",
+        database: "servidor01191125",
         options: {
-            encrypt: true
+            encrypt: false
         }
-    }
+}
 }
  
 var sql = require('mssql');
