@@ -56,7 +56,7 @@
         </style>
         <h3>Login</h3>
     <div class="login">
-        <center><form id="form_login" method="post" onsubmit="return entrar()">
+        <center><form id="form_login" method="POST" onsubmit="event.preventDefault(); entrar()">
                 <div class="form-group">
                  <label for="exampleInputEmail1">Email</label> <br>
                   <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" placeholder="Insira seu email">
@@ -73,12 +73,13 @@
     <div class="linkcad">
             Não possui conta? <a href="cadastro.html">Cadastre-se aqui.</a>
     </div>
+    <img src="img/aguarde.gif" id="img_aguarde" style="display: none;" width="100px" height="100px">
 </body>
 </html>
 
 <script>
 
-
+sessionStorage.form1 = 0;
 verificarAutenticacao();
 
 function verificarAutenticacao() {
@@ -114,15 +115,15 @@ function entrar() {
 }
 
 function aguardar() {
-    btn_entrar.disabled = true;
+    // btn_entrar.disabled = true;
     img_aguarde.style.display='block';
-    div_erro.style.display='none';
+    // div_erro.style.display='none';
 }
 
 function finalizar_aguardar() {
-    btn_entrar.disabled = false;
+    // btn_entrar.disabled = false;
     img_aguarde.style.display='none';
-    div_erro.style.display='block';
+    // div_erro.style.display='block';
 }
 
 </script>

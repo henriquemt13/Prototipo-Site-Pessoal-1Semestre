@@ -36,5 +36,33 @@ router.post('/entrar', function (req, res, next) {
 
 });
 
+
+router.post('/cadastrar',(req, res, next) =>{
+  banco.conectar().then(pool => {
+    console.log(`Chegou p/ cadastro: ${JSON.stringify(req.body)}`);
+    var login = req.body.email; // depois de .body, use o nome (name) do campo em seu formulário de login
+    var senha = req.body.senha; // depois de .body, use o nome (name) do campo em seu formulário de login
+    var nome = req.body.nome;
+    var endereco = req.body.endereco;
+    var cidade = req.body.cidade;
+    var estado = req.body.estado;
+    var cep = req.body.cep;
+    var tel = req.body.telefone;
+
+    // if (login == undefined || senha == undefined) {
+    //   throw new Error(`Dados de login não chegaram completos: ${login} / ${senha}`);
+    // }
+  
+    return pool.request().query(`insert into Cadastrar (email, senha, nome, endereco, cidade, estado, cep, telefone) values ('${login}', '${senha}', '${nome}', '${endereco}', '${cidade}', '${estado}', '${cep}', '${tel}')`);
+  }).then(()=>{
+    res.send(200);
+  }).catch(err=>{
+    console.log(err);
+  }).finally(()=>{
+    banco.sql.close();
+  })
+});
+
+
 // não mexa nesta linha!
 module.exports = router;

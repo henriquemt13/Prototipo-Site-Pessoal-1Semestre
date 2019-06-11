@@ -41,54 +41,106 @@
         <h4>Cadastro</h4>
         <div class="cadastro">
 
-        <left> <form>
+        <left> <form id="form_cadastro" method="POST" onsubmit="event.preventDefault(); cadastrar()">
                     <div class="form-row">
                            
                           </div>
                           <div class="form-row">
                                 <div class="form-group col-md-6">
                                 <br>  <label for="inputcontato">Nome</label>
-                                  <input type="text" class="form-control" id="idNome" placeholder="José da Silva">
+                                  <input type="text" class="form-control" id="idNome" name="nome" placeholder="José da Silva">
                               </div>
                               <div class="form-group col-md-6">
                                 <br>    <label for="inputTelefone">Telefone</label>
-                                    <input type="number" class="form-control" id="inputTelefone" placeholder="(xx)xxxxx-xxxx">
+                                    <input type="number" class="form-control" id="inputTelefone" name="telefone" placeholder="(xx)xxxxx-xxxx">
                               </div>
                               </div>
                 <div class="form-row">
                       <div class="form-group col-md-6">
                     <br>    <label for="inputEmail4">Email</label>
-                        <input type="email" class="form-control" id="inputEmail4" placeholder="abcdefgsa@xxx.com">
+                        <input type="email" class="form-control" id="inputEmail4" name="email" placeholder="abcdefgsa@xxx.com">
                     </div>
                     <div class="form-group col-md-6">
                      <br>   <label for="inputPassword4">Senha</label>
-                        <input type="password" class="form-control" id="inputPassword4" placeholder="*******">
+                        <input type="password" class="form-control" id="inputPassword4" name="senha" placeholder="*******">
                     </div>
                     </div>
                     <div class="form-group">
                  <br>   <label for="inputAddress">Endereço</label>
-                    <input type="text" class="form-control" id="inputAddress" placeholder="Avenida Paulista, nº 0">
+                    <input type="text" class="form-control" id="inputAddress" name="endereco" placeholder="Avenida Paulista, nº 0">
                     </div>
                     <div class="form-row">
                     <div class="form-group col-md-6">
                     <br>    <label for="inputCity">Cidade</label>
-                        <input type="text" class="form-control" id="inputCity">
+                        <input type="text" class="form-control" name="cidade" id="inputCity">
                     </div>
                     <div class="form-group col-md-4">
                     <br>    <label for="inputEstado">Estado</label>
-                        <select id="inputEstado" class="form-control">
-                     <br>   <option selected>Escolher...</option>
-                        <option>...</option>
-                        </select>
-                    </div>
+                        
+                        
+                     <select id="estado" name="estado" class="form-control">
+                     <option selected>Escolher...</option>
+                     <option value="AC">AC</option>
+                     <option value="AL">AL</option>
+                     <option value="AP">AP</option>
+                     <option value="AM">AM</option>
+                     <option value="BA">BA</option>
+                     <option value="CE">CE</option>
+                     <option value="DF">DF</option>
+                     <option value="ES">ES</option>
+                     <option value="GO">GO</option>
+                     <option value="MA">MA</option>
+                     <option value="MG">MG</option>
+                     <option value="MT">MT</option>
+                     <option value="MS">MS</option>
+                     <option value="PA">PA</option>
+                     <option value="PB">PB</option>
+                     <option value="PE">PE</option>
+                     <option value="PI">PI</option>
+                     <option value="PR">PR</option>
+                     <option value="RJ">RJ</option>
+                     <option value="RN">RN</option>
+                     <option value="RO">RO</option>
+                     <option value="RR">RR</option>
+                     <option value="RS">RS</option>
+                     <option value="SC">SC</option>
+                     <option value="SE">SE</option>
+                     <option value="SP">SP</option>
+                     <option value="TO">TO</option>
+                     </select>
+                 </div>
                     <div class="form-group col-md-2">
                     <br>    <label for="inputCEP">CEP</label>
-                        <input type="text" class="form-control" id="inputCEP">
+                        <input type="text" class="form-control" name ='cep' id="inputCEP">
                     </div>
                     </div> <br>
-                    <center><button type="submit" class="btn btn-primary" style="background-color:#000000;border-color:#000000; color: #ffffff">Criar conta</button>
+                    <center><button  class="btn btn-primary" style="background-color:#000000;border-color:#000000; color: #ffffff">Criar conta</button>
                     </center>
                 </form> </left>
         </div>        
+        <img src="img/aguarde.gif" id="img_aguarde" style="display: none;" width="100px" height="100px">
 </body>
 </html>
+
+<script>
+
+sessionStorage.form1 = 0;
+	function cadastrar()
+     {   var formulario = new URLSearchParams(new FormData(form_cadastro));
+        console.log(formulario);
+        fetch('/usuarios/cadastrar', {
+            method: "POST",
+            body: formulario
+        }).then((response) => {
+            if(response.ok){
+                alert('Cadastrado com sucesso!');
+                window.location = "index.html"
+                }else{
+                    console.log(`Erro no registro.`);
+                }
+            });
+                return false;
+        }
+    
+
+</script>

@@ -5,7 +5,7 @@ var configuracoes = {
         server: "servidor01191125.database.windows.net",
         user: "hmt01191125",
         password: "#Gf47864718876",
-        database: "servidor01191125",
+        database: "BancoProjeto",
         options: {
             encrypt: true
         },
@@ -20,7 +20,7 @@ var configuracoes = {
         server: "servidor01191125.database.windows.net",
         user: "",
         password: "",
-        database: "servidor01191125",
+        database: "BancoProjeto",
         options: {
             encrypt: false
         }
