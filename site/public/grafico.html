@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Página com exemplo de gráfico com Chart.js</title>
+    <title>Dashboard</title>
 
     <!-- scripts do Chart.js -->
     <script type="text/javascript" src="https://www.chartjs.org/dist/2.8.0/Chart.min.js"></script>
@@ -32,14 +32,14 @@
     var usuario;
     var exibiu_grafico = false;
 
-    //verificarAutenticacao();
+    verificarAutenticacao();
 
     function verificarAutenticacao() {
         usuario = sessionStorage.usuario_bandtec;
         if (usuario == undefined) {
             window.location.href = 'index.html';
         } else {
-            b_usuario.innerHTML = usuario;
+            b_usuario.innerHTML = sessionStorage.usuario_bandtec;
         }
     }
 

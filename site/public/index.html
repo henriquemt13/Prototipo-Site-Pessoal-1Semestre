@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>DFS :: Login</title>
+    <title>Login</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> 
 
 
@@ -73,7 +73,7 @@
     <div class="linkcad">
             Não possui conta? <a href="cadastro.html">Cadastre-se aqui.</a>
     </div>
-    <img src="img/aguarde.gif" id="img_aguarde" style="display: none;" width="100px" height="100px">
+   <center><img src="img/aguarde.gif" id="img_aguarde" style="display: none;" width="100px" height="100px"></center> 
 </body>
 </html>
 
@@ -99,13 +99,13 @@ function entrar() {
         if (response.ok) {
 
             response.json().then(function (resposta) {
-
+                
                 sessionStorage.usuario_bandtec = resposta.nome;
                 verificarAutenticacao();
 
             });
         } else {
-
+            alert('Usuário não encontrado');
             console.log('Erro de login!');
             finalizar_aguardar();
         }
